@@ -44,35 +44,36 @@ public class GradientLayout extends View {
         mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.b);
 
         mPaint = new Paint(); //初始化
-        mPaint.setColor(Color.RED);// 设置颜色
-        mPaint.setARGB(255, 255, 255, 0); // 设置 Paint对象颜色,范围为0~255
+//        mPaint.setColor(Color.RED);// 设置颜色
+        mPaint.setARGB(255, 0, 0, 0); // 设置 Paint对象颜色,范围为0~255
         mPaint.setAlpha(200); // 设置alpha不透明度,范围为0~255
         mPaint.setAntiAlias(true); // 抗锯齿
-        mPaint.setStyle(Paint.Style.FILL); //描边效果
+//        mPaint.setStyle(Paint.Style.FILL); //描边效果
         mPaint.setStrokeWidth(4);//描边宽度
         mPaint.setStrokeCap(Paint.Cap.ROUND); //圆角效果
-        mPaint.setStrokeJoin(Paint.Join.MITER);//拐角风格
-        mPaint.setShader(new SweepGradient(200, 200, Color.BLUE, Color.RED)); //设置环形渲染器
-        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DARKEN)); //设置图层混合模式
-        mPaint.setColorFilter(new LightingColorFilter(0x00ffff, 0x000000)); //设置颜色过滤器
-        mPaint.setFilterBitmap(true); //设置双线性过滤
-        mPaint.setMaskFilter(new BlurMaskFilter(10, BlurMaskFilter.Blur.NORMAL));//设置画笔遮罩滤镜 ,传入度数和样式
-        mPaint.setTextScaleX(2);// 设置文本缩放倍数
+//        mPaint.setStrokeJoin(Paint.Join.MITER);//拐角风格
+//        mPaint.setShader(new SweepGradient(200, 200, Color.BLUE, Color.RED)); //设置环形渲染器
+//        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DARKEN)); //设置图层混合模式
+//        mPaint.setColorFilter(new LightingColorFilter(0x00ffff, 0x000000)); //设置颜色过滤器
+//        mPaint.setFilterBitmap(true); //设置双线性过滤
+//        mPaint.setMaskFilter(new BlurMaskFilter(10, BlurMaskFilter.Blur.NORMAL));//设置画笔遮罩滤镜 ,传入度数和样式
+//        mPaint.setTextScaleX(2);// 设置文本缩放倍数
         mPaint.setTextSize(38);// 设置字体大小
-        mPaint.setTextAlign(Paint.Align.LEFT);//对其方式
-        mPaint.setUnderlineText(true);// 设置下划线
-
-        String str = "Android高级工程师";
-        Rect rect = new Rect();
-        mPaint.getTextBounds(str, 0, str.length(), rect); //测量文本大小，将文本大小信息存放在rect中
-        mPaint.measureText(str); //获取文本的宽
-        mPaint.getFontMetrics(); //获取字体度量对象
+//        mPaint.setTextAlign(Paint.Align.LEFT);//对其方式
+//        mPaint.setUnderlineText(true);// 设置下划线
+//
+//        String str = "Android高级工程师";
+//        Rect rect = new Rect();
+//        mPaint.getTextBounds(str, 0, str.length(), rect); //测量文本大小，将文本大小信息存放在rect中
+//        mPaint.measureText(str); //获取文本的宽
+//        mPaint.getFontMetrics(); //获取字体度量对象
 
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+//        canvas.drawText("Android", 220, 220, mPaint);
 //        /**
 //         * 1.线性渲染,LinearGradient(float x0, float y0, float x1, float y1, @NonNull @ColorInt int colors[], @Nullable float positions[], @NonNull TileMode tile)
 //         * (x0,y0)：渐变起始点坐标
@@ -83,9 +84,9 @@ public class GradientLayout extends View {
 //         * positions:位置数组，position的取值范围[0,1],作用是指定某个位置的颜色值，如果传null，渐变就线性变化。
 //         * tile:用于指定控件区域大于指定的渐变区域时，空白区域的颜色填充方法
 //         */
-//        mShader = new LinearGradient(0, 0, 500, 500, new int[]{Color.RED, Color.BLUE, Color.GREEN}, new float[]{0.f,0.7f,1}, Shader.TileMode.REPEAT);
+//        mShader = new LinearGradient(0, 0, 500, 500, new int[]{Color.GREEN, Color.BLUE, Color.GREEN}, new float[]{0.f,0.5f,1.f}, Shader.TileMode.REPEAT);
 //        mPaint.setShader(mShader);
-////        canvas.drawCircle(250, 250, 250, mPaint);
+//        canvas.drawCircle(250, 250, 250, mPaint);
 //        canvas.drawRect(0,0,1000,1000, mPaint);
 
 //        //        /**
@@ -108,9 +109,9 @@ public class GradientLayout extends View {
 ////         * color0,color1：渐变开始结束颜色
 ////         * colors，positions：类似LinearGradient,用于多颜色渐变,positions为null时，根据颜色线性渐变
 ////         */
-//        mShader = new SweepGradient(250, 250, Color.RED, Color.GREEN);
-//        mPaint.setShader(mShader);
-//        canvas.drawCircle(250, 250, 250, mPaint);
+        mShader = new SweepGradient(250, 250, Color.RED, Color.GREEN);
+        mPaint.setShader(mShader);
+        canvas.drawCircle(250, 250, 250, mPaint);
 
 ////        //        /**
 //////         * 位图渲染，BitmapShader(@NonNull Bitmap bitmap, @NonNull TileMode tileX, @NonNull TileMode tileY)
@@ -126,20 +127,20 @@ public class GradientLayout extends View {
 //        canvas.drawRect(0,0,500, 500, mPaint);
 ////        canvas.drawCircle(250, 250, 250, mPaint);
 
-
-        /**
-         * 组合渲染，
-         * ComposeShader(@NonNull Shader shaderA, @NonNull Shader shaderB, Xfermode mode)
-         * ComposeShader(@NonNull Shader shaderA, @NonNull Shader shaderB, PorterDuff.Mode mode)
-         * shaderA,shaderB:要混合的两种shader
-         * Xfermode mode： 组合两种shader颜色的模式
-         * PorterDuff.Mode mode: 组合两种shader颜色的模式
-         */
-        BitmapShader bitmapShader = new BitmapShader(mBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        LinearGradient linearGradient = new LinearGradient(0, 0, 1000, 1600, new int[]{Color.RED, Color.GREEN, Color.BLUE}, null, Shader.TileMode.CLAMP);
-        mShader = new ComposeShader(bitmapShader, linearGradient, PorterDuff.Mode.MULTIPLY);
-        mPaint.setShader(mShader);
-        canvas.drawCircle(500, 500, 500, mPaint);
+//
+//        /**
+//         * 组合渲染，
+//         * ComposeShader(@NonNull Shader shaderA, @NonNull Shader shaderB, Xfermode mode)
+//         * ComposeShader(@NonNull Shader shaderA, @NonNull Shader shaderB, PorterDuff.Mode mode)
+//         * shaderA,shaderB:要混合的两种shader
+//         * Xfermode mode： 组合两种shader颜色的模式
+//         * PorterDuff.Mode mode: 组合两种shader颜色的模式
+//         */
+//        BitmapShader bitmapShader = new BitmapShader(mBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+//        LinearGradient linearGradient = new LinearGradient(0, 0, 1000, 1600, new int[]{Color.RED, Color.GREEN, Color.BLUE}, null, Shader.TileMode.CLAMP);
+//        mShader = new ComposeShader(bitmapShader, linearGradient, PorterDuff.Mode.MULTIPLY);
+//        mPaint.setShader(mShader);
+//        canvas.drawCircle(500, 500, 500, mPaint);
 
     }
 }
